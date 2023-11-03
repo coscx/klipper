@@ -1,6 +1,6 @@
 import 'package:flt_im_plugin/flt_im_plugin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/services/services.dart';
+import 'package:flutter_klipper/common/services/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

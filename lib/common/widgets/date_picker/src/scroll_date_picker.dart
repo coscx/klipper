@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/widgets/date_picker/scroll_date_picker.dart';
+import 'package:flutter_klipper/common/widgets/date_picker/scroll_date_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'models/date_picker_options.dart';
 import 'models/date_picker_scroll_view_options.dart';

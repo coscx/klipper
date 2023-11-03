@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/values/values.dart';
-import 'package:flutter_ckt/common/widgets/widgets.dart';
+import 'package:flutter_klipper/common/values/values.dart';
+import 'package:flutter_klipper/common/widgets/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter_ckt/common/apis/apis.dart';
-import 'package:flutter_ckt/common/entities/login/account.dart';
-import 'package:flutter_ckt/common/services/services.dart';
-import 'package:flutter_ckt/common/values/values.dart';
+import 'package:flutter_klipper/common/apis/apis.dart';
+import 'package:flutter_klipper/common/entities/login/account.dart';
+import 'package:flutter_klipper/common/services/services.dart';
+import 'package:flutter_klipper/common/values/values.dart';
 import 'package:get/get.dart';
 
 import '../entities/login/login_model.dart';

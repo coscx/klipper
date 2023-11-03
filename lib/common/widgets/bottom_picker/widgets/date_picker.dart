@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_ckt/common/widgets/date_picker/src/models/date_picker_scroll_view_options.dart';
+import 'package:flutter_klipper/common/widgets/date_picker/src/models/date_picker_scroll_view_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../date_picker/src/models/date_picker_options.dart';

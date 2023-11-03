@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/common/entities/detail/store_vip.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/common/entities/detail/store_vip.dart';
 import 'package:get/get.dart';
 
 import '../../common/entities/home/common.dart';

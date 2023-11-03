@@ -1,5 +1,5 @@
 import 'package:flt_im_plugin/flt_im_plugin.dart';
-import 'package:flutter_ckt/common/entities/login/account.dart';
+import 'package:flutter_klipper/common/entities/login/account.dart';
 import 'package:get/get.dart';
 
 import '../../common/routers/names.dart';

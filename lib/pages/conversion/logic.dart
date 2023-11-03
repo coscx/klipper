@@ -1,8 +1,8 @@
 import 'package:flt_im_plugin/conversion.dart';
 import 'package:flt_im_plugin/flt_im_plugin.dart';
 import 'package:flt_im_plugin/value_util.dart';
-import 'package:flutter_ckt/common/routers/names.dart';
-import 'package:flutter_ckt/common/services/services.dart';
+import 'package:flutter_klipper/common/routers/names.dart';
+import 'package:flutter_klipper/common/services/services.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 

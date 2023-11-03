@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/entities/loan/audit.dart';
-import 'package:flutter_ckt/common/entities/loan/loan.dart';
-import 'package:flutter_ckt/pages/my_user/widget/my_user_filter_page.dart';
-import 'package:flutter_ckt/pages/total_user/logic.dart';
+import 'package:flutter_klipper/common/entities/loan/audit.dart';
+import 'package:flutter_klipper/common/entities/loan/loan.dart';
+import 'package:flutter_klipper/pages/my_user/widget/my_user_filter_page.dart';
+import 'package:flutter_klipper/pages/total_user/logic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:just_bottom_sheet/drag_zone_position.dart';

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 
-import 'package:flutter_ckt/pages/oa/home_message/widget/app_bar_component.dart';
-import 'package:flutter_ckt/pages/oa/home_message/widget/photo_widget_list_item.dart';
+import 'package:flutter_klipper/pages/oa/home_message/widget/app_bar_component.dart';
+import 'package:flutter_klipper/pages/oa/home_message/widget/photo_widget_list_item.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';

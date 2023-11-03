@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/setting/widget/setting_page.dart';
+import 'package:flutter_klipper/pages/setting/widget/setting_page.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

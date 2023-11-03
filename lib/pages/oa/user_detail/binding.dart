@@ -1,5 +1,5 @@
-import 'package:flutter_ckt/pages/search/logic.dart';
-import 'package:flutter_ckt/pages/search/view.dart';
+import 'package:flutter_klipper/pages/search/logic.dart';
+import 'package:flutter_klipper/pages/search/view.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

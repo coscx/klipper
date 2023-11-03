@@ -1,4 +1,4 @@
-import 'package:flutter_ckt/pages/friend/logic.dart';
+import 'package:flutter_klipper/pages/friend/logic.dart';
 import 'package:get/get.dart';
 
 import '../search/logic.dart';

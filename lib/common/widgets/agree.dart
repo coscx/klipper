@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_ckt/common/services/services.dart';
-import 'package:flutter_ckt/common/widgets/protocol_model.dart';
+import 'package:flutter_klipper/common/services/services.dart';
+import 'package:flutter_klipper/common/widgets/protocol_model.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 

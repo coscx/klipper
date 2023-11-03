@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/routers/names.dart';
-import 'package:flutter_ckt/common/widgets/empty_page.dart';
-import 'package:flutter_ckt/pages/flow_page/widget/flow.dart';
+import 'package:flutter_klipper/common/routers/names.dart';
+import 'package:flutter_klipper/common/widgets/empty_page.dart';
+import 'package:flutter_klipper/pages/flow_page/widget/flow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';

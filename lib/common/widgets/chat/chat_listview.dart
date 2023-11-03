@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'strings.dart';
-import 'package:flutter_ckt/common/widgets/chat/styles.dart';
+import 'package:flutter_klipper/common/widgets/chat/styles.dart';
 import 'touch_close_keyboard.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

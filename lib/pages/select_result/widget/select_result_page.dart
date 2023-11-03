@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/widgets/extend_image.dart';
+import 'package:flutter_klipper/common/widgets/extend_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lpinyin/lpinyin.dart';
 

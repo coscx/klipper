@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/widgets/fine/fine.dart';
-import 'package:flutter_ckt/pages/lost_user/widget/loat_app_bar_component.dart';
+import 'package:flutter_klipper/common/widgets/fine/fine.dart';
+import 'package:flutter_klipper/pages/lost_user/widget/loat_app_bar_component.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';

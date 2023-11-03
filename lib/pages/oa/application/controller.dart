@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:flutter_ckt/common/routers/routes.dart';
-import 'package:flutter_ckt/common/utils/utils.dart';
-import 'package:flutter_ckt/common/values/values.dart';
-import 'package:flutter_ckt/pages/conversion/logic.dart';
-import 'package:flutter_ckt/pages/peer_chat/logic.dart';
+import 'package:flutter_klipper/common/routers/routes.dart';
+import 'package:flutter_klipper/common/utils/utils.dart';
+import 'package:flutter_klipper/common/values/values.dart';
+import 'package:flutter_klipper/pages/conversion/logic.dart';
+import 'package:flutter_klipper/pages/peer_chat/logic.dart';
 import 'package:get/get.dart';
 
 import 'package:uni_links/uni_links.dart';

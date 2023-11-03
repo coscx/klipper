@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/common/entities/home/tree_store.dart';
-import 'package:flutter_ckt/common/services/services.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/common/entities/home/tree_store.dart';
+import 'package:flutter_klipper/common/services/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

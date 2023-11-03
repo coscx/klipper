@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/search_appoint/widget/serach_page.dart';
+import 'package:flutter_klipper/pages/search_appoint/widget/serach_page.dart';
 import 'package:get/get.dart';
 
 import '../search/widget/serach_page.dart';

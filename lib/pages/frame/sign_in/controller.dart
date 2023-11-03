@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/apis/apis.dart';
-import 'package:flutter_ckt/common/entities/entities.dart';
-import 'package:flutter_ckt/common/routers/routes.dart';
-import 'package:flutter_ckt/common/store/store.dart';
-import 'package:flutter_ckt/common/utils/utils.dart';
-import 'package:flutter_ckt/common/widgets/widgets.dart';
+import 'package:flutter_klipper/common/apis/apis.dart';
+import 'package:flutter_klipper/common/entities/entities.dart';
+import 'package:flutter_klipper/common/routers/routes.dart';
+import 'package:flutter_klipper/common/store/store.dart';
+import 'package:flutter_klipper/common/utils/utils.dart';
+import 'package:flutter_klipper/common/widgets/widgets.dart';
 import 'package:get/get.dart';
 
 import 'index.dart';

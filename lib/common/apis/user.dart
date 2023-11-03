@@ -1,5 +1,5 @@
-import 'package:flutter_ckt/common/entities/entities.dart';
-import 'package:flutter_ckt/common/utils/utils.dart';
+import 'package:flutter_klipper/common/entities/entities.dart';
+import 'package:flutter_klipper/common/utils/utils.dart';
 
 /// 用户
 class UserAPI {

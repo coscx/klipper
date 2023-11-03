@@ -6,10 +6,10 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/entities/loan/test.dart';
+import 'package:flutter_klipper/common/entities/loan/test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_ckt/main.dart';
+import 'package:flutter_klipper/main.dart';
 
 void main() {
 

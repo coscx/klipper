@@ -1,15 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ckt/common/entities/detail/action.dart';
-import 'package:flutter_ckt/common/entities/detail/appoint.dart';
-import 'package:flutter_ckt/common/entities/detail/calllog.dart';
-import 'package:flutter_ckt/common/entities/detail/connect.dart';
-import 'package:flutter_ckt/common/entities/detail/user_detail.dart';
-import 'package:flutter_ckt/common/routers/names.dart';
-import 'package:flutter_ckt/common/services/services.dart';
-import 'package:flutter_ckt/pages/user_detail/widget/common_dialog.dart';
-import 'package:flutter_ckt/pages/user_detail/widget/share.dart';
+import 'package:flutter_klipper/common/entities/detail/action.dart';
+import 'package:flutter_klipper/common/entities/detail/appoint.dart';
+import 'package:flutter_klipper/common/entities/detail/calllog.dart';
+import 'package:flutter_klipper/common/entities/detail/connect.dart';
+import 'package:flutter_klipper/common/entities/detail/user_detail.dart';
+import 'package:flutter_klipper/common/routers/names.dart';
+import 'package:flutter_klipper/common/services/services.dart';
+import 'package:flutter_klipper/pages/user_detail/widget/common_dialog.dart';
+import 'package:flutter_klipper/pages/user_detail/widget/share.dart';
 import 'package:fluwx_no_pay/fluwx_no_pay.dart' as fluwx;
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';

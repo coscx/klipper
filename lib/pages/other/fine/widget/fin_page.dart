@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/common/entities/loan/loan.dart';
-import 'package:flutter_ckt/common/services/services.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/common/entities/loan/loan.dart';
+import 'package:flutter_klipper/common/services/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';

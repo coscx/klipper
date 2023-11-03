@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/user_detail/widget/panel.dart';
+import 'package:flutter_klipper/pages/user_detail/widget/panel.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_star/star.dart';

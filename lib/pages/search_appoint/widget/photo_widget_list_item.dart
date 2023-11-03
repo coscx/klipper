@@ -1,8 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/routers/pages.dart';
-import 'package:flutter_ckt/pages/user_detail/view.dart';
+import 'package:flutter_klipper/common/routers/pages.dart';
+import 'package:flutter_klipper/pages/user_detail/view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/search_flow/widget/wx_search_page.dart';
+import 'package:flutter_klipper/pages/search_flow/widget/wx_search_page.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

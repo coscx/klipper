@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/services/services.dart';
-import 'package:flutter_ckt/common/store/store.dart';
-import 'package:flutter_ckt/common/utils/utils.dart';
+import 'package:flutter_klipper/common/services/services.dart';
+import 'package:flutter_klipper/common/store/store.dart';
+import 'package:flutter_klipper/common/utils/utils.dart';
 import 'package:fluwx_no_pay/fluwx_no_pay.dart';
 import 'package:get/get.dart';
 import 'common/utils/app_env.dart';

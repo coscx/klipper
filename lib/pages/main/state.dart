@@ -1,4 +1,4 @@
-import 'package:flutter_ckt/common/entities/entities.dart';
+import 'package:flutter_klipper/common/entities/entities.dart';
 import 'package:get/get.dart';
 
 class MainState {

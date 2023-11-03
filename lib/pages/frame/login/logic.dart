@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_ckt/pages/user_detail/widget/common_dialog.dart';
+import 'package:flutter_klipper/pages/user_detail/widget/common_dialog.dart';
 import 'package:get/get.dart';
 
 import '../../../common/apis/common.dart';

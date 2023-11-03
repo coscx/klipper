@@ -1,5 +1,5 @@
 
-import 'package:flutter_ckt/common/entities/loan/note.dart';
+import 'package:flutter_klipper/common/entities/loan/note.dart';
 import 'package:get/get.dart';
 
 import '../../common/entities/flow/wx_article.dart';

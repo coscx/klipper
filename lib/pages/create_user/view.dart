@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/create_user/widget/CreateUserPage.dart';
+import 'package:flutter_klipper/pages/create_user/widget/CreateUserPage.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

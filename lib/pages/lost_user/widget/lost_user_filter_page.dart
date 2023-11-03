@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/common/entities/loan/step.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/common/entities/loan/step.dart';
 
 import 'package:flutter_picker/picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

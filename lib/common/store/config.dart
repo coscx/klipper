@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/services/services.dart';
-import 'package:flutter_ckt/common/values/values.dart';
+import 'package:flutter_klipper/common/services/services.dart';
+import 'package:flutter_klipper/common/values/values.dart';
 import 'package:get/get.dart';
 import 'package:package_info/package_info.dart';
 

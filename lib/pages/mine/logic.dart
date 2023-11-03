@@ -1,5 +1,5 @@
-import 'package:flutter_ckt/common/entities/loan/saleman_grid.dart';
-import 'package:flutter_ckt/common/services/services.dart';
+import 'package:flutter_klipper/common/entities/loan/saleman_grid.dart';
+import 'package:flutter_klipper/common/services/services.dart';
 import 'package:get/get.dart';
 import 'package:fluwx_no_pay/fluwx_no_pay.dart' as fluwx;
 import '../../common/apis/common.dart';

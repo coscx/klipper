@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/common/entities/loan/loan.dart';
-import 'package:flutter_ckt/pages/channel/view.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/common/entities/loan/loan.dart';
+import 'package:flutter_klipper/pages/channel/view.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';

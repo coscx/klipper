@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/distribute/widget/change_user.dart';
+import 'package:flutter_klipper/pages/distribute/widget/change_user.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

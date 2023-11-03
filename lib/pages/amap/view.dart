@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/widgets/new_amaps.dart';
+import 'package:flutter_klipper/common/widgets/new_amaps.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

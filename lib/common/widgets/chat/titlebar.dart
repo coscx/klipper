@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/widgets/chat/search_box.dart';
-import 'package:flutter_ckt/common/widgets/chat/strings.dart';
-import 'package:flutter_ckt/common/widgets/chat/styles.dart';
+import 'package:flutter_klipper/common/widgets/chat/search_box.dart';
+import 'package:flutter_klipper/common/widgets/chat/strings.dart';
+import 'package:flutter_klipper/common/widgets/chat/styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

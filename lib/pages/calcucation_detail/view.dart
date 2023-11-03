@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/pages/calcucation_detail/widget/calcucation_page.dart';
+import 'package:flutter_klipper/pages/calcucation_detail/widget/calcucation_page.dart';
 import 'package:get/get.dart';
 
 import 'logic.dart';

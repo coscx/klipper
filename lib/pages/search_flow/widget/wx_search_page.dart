@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/common/entities/home/only_store.dart';
-import 'package:flutter_ckt/pages/search_flow/widget/single_choice.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/common/entities/home/only_store.dart';
+import 'package:flutter_klipper/pages/search_flow/widget/single_choice.dart';
 
 
 import 'package:flutter_picker/picker.dart';

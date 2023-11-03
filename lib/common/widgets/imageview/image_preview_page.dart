@@ -9,8 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/widgets/imageview/primitive_navigation_bar.dart';
-import 'package:flutter_ckt/common/widgets/imageview/support_activity_indicator.dart';
+import 'package:flutter_klipper/common/widgets/imageview/primitive_navigation_bar.dart';
+import 'package:flutter_klipper/common/widgets/imageview/support_activity_indicator.dart';
 import 'package:get/get.dart';
 
 import '../extend_image.dart';

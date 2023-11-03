@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/entities/home/search_erp.dart';
-import 'package:flutter_ckt/pages/search/widget/photo_widget_list_item.dart';
-import 'package:flutter_ckt/pages/search_appoint/widget/photo_widget_list_item.dart';
+import 'package:flutter_klipper/common/entities/home/search_erp.dart';
+import 'package:flutter_klipper/pages/search/widget/photo_widget_list_item.dart';
+import 'package:flutter_klipper/pages/search_appoint/widget/photo_widget_list_item.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

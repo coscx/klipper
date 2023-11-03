@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/entities/loan/loan_detail.dart';
+import 'package:flutter_klipper/common/entities/loan/loan_detail.dart';
 
 class Doodle {
   final String name;

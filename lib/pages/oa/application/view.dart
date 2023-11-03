@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/utils/iconfont.dart';
-import 'package:flutter_ckt/common/values/values.dart';
-import 'package:flutter_ckt/common/widgets/unit_bottom_bar.dart';
-import 'package:flutter_ckt/common/widgets/widgets.dart';
+import 'package:flutter_klipper/common/utils/iconfont.dart';
+import 'package:flutter_klipper/common/values/values.dart';
+import 'package:flutter_klipper/common/widgets/unit_bottom_bar.dart';
+import 'package:flutter_klipper/common/widgets/widgets.dart';
 
-import 'package:flutter_ckt/pages/conversion/view.dart';
-import 'package:flutter_ckt/pages/flow_page/view.dart';
-import 'package:flutter_ckt/pages/home/view.dart';
-import 'package:flutter_ckt/pages/main/index.dart';
-import 'package:flutter_ckt/pages/mine/view.dart';
-import 'package:flutter_ckt/pages/oa/home_message/view.dart';
-import 'package:flutter_ckt/pages/oa/person/view.dart';
-import 'package:flutter_ckt/pages/oa/work/view.dart';
+import 'package:flutter_klipper/pages/conversion/view.dart';
+import 'package:flutter_klipper/pages/flow_page/view.dart';
+import 'package:flutter_klipper/pages/home/view.dart';
+import 'package:flutter_klipper/pages/main/index.dart';
+import 'package:flutter_klipper/pages/mine/view.dart';
+import 'package:flutter_klipper/pages/oa/home_message/view.dart';
+import 'package:flutter_klipper/pages/oa/person/view.dart';
+import 'package:flutter_klipper/pages/oa/work/view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 

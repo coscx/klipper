@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_ckt/common/values/values.dart';
+import 'package:flutter_klipper/common/values/values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'extend_image.dart';

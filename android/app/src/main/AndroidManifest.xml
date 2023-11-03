@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.coscx.ckt">
+    package="com.coscx.klipper">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.NFC" />
@@ -30,8 +30,8 @@
 
     <uses-feature android:name="android.hardware.nfc" />
    <application
-        android:label="财客通"
-        android:name="com.coscx.ckt.MyFlutterApplication"
+        android:label="Klipper"
+        android:name="com.coscx.klipper.MyFlutterApplication"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:allowBackup="true"

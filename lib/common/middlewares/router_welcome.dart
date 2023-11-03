@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ckt/common/routers/routes.dart';
-import 'package:flutter_ckt/common/store/store.dart';
+import 'package:flutter_klipper/common/routers/routes.dart';
+import 'package:flutter_klipper/common/store/store.dart';
 
 import 'package:get/get.dart';
 

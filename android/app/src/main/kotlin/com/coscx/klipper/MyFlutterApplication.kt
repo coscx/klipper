@@ -1,4 +1,4 @@
-package com.coscx.ckt
+package com.coscx.klipper
 import com.auwx.umeng_analytics_with_push.UmengAnalyticsWithPush
 import io.flutter.app.FlutterApplication
 
@@ -16,8 +16,7 @@ class MyFlutterApplication: FlutterApplication() {
             appKey="625cbfde10fad5015d8e76f1",
             secret = "1bef9ca99f1ea5011e53b33f6a491a54",
             channel = "default",
-            enableLog = BuildConfig.DEBUG,
-            resourcePackageName="com.coscx.ckt"
+            resourcePackageName="com.coscx.klipper"
             // ... other arguments
         )
     }

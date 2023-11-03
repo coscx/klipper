@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ckt/common/apis/common.dart';
-import 'package:flutter_ckt/pages/create_user/widget/textStyles.dart';
+import 'package:flutter_klipper/common/apis/common.dart';
+import 'package:flutter_klipper/pages/create_user/widget/textStyles.dart';
 import 'package:flutter_picker/picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
