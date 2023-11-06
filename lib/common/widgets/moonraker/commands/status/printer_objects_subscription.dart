@@ -9,13 +9,15 @@ class PrinterObjectsSubscribeCommand extends JsonRPCCommand {
   Map<String, dynamic> parameters = {};
 
   PrinterObjectsSubscribeCommand({required List<ObjectStatusQuery> objects}) {
+    Map<String, Map<String, dynamic>> tempParameters = Map<String, Map<String, dynamic>>.from(parameters);
+    tempParameters['objects'] = {};
     for (final element in objects) {
-      final tempParameters = parameters;
-      tempParameters['objects'] = {};
-      tempParameters['objects']![element.name] =
-          element.parameters.isEmpty ? null : element.parameters;
-      parameters = tempParameters;
+
+
+      tempParameters['objects']![element.name] = element.parameters.isEmpty ? null : element.parameters;
+
     }
+    parameters = tempParameters;
   }
 }
 

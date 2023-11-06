@@ -5,7 +5,7 @@ abstract class ObjectStatusQuery {
 
 class WebhookStatusQuery extends ObjectStatusQuery {
   WebhookStatusQuery({bool state = true, bool stateMessage = true}) {
-    name = 'webhooks';
+    this.name = 'webhooks';
     parameters['state'] = state;
     parameters['state_message'] = stateMessage;
   }
@@ -22,7 +22,7 @@ class GCodeMoveStatusQuery extends ObjectStatusQuery {
     bool position = true,
     bool gcodePosition = true,
   }) {
-    name = 'gcode_move';
+    this.name = 'gcode_move';
     parameters['speed_factor'] = speedFactor;
     parameters['speed'] = speed;
     parameters['extrude_factor'] = extrudeFactor;
@@ -46,7 +46,7 @@ class ToolheadStatusQuery extends ObjectStatusQuery {
     bool maxAccelerationToDeceleration = true,
     bool squareCornerVelocity = true,
   }) {
-    name = 'toolhead';
+    this.name = 'toolhead';
     parameters['homed_axes'] = homedAxes;
     parameters['print_time'] = printTime;
     parameters['estimated_print_time'] = estimatedPrintTime;
@@ -65,7 +65,7 @@ class ConfigFileStatusQuery extends ObjectStatusQuery {
     bool settings = true,
     bool saveConfigPending = true,
   }) {
-    name = 'configfile';
+    this.name = 'configfile';
     parameters['config'] = config;
     parameters['settings'] = settings;
     parameters['save_config_pending'] = saveConfigPending;
@@ -80,7 +80,7 @@ class ExtruderStatusQuery extends ObjectStatusQuery {
     bool pressureAdvance = true,
     bool smoothTime = true,
   }) {
-    name = 'extruder';
+    this.name = 'extruder';
     parameters['temperature'] = temperature;
     parameters['target'] = target;
     parameters['power'] = power;
@@ -95,7 +95,7 @@ class HeaterBedStatusQuery extends ObjectStatusQuery {
     bool target = true,
     bool power = true,
   }) {
-    name = 'heater_bed';
+    this.name = 'heater_bed';
     parameters['temperature'] = temperature;
     parameters['target'] = target;
     parameters['power'] = power;
@@ -107,7 +107,7 @@ class FanStatusQuery extends ObjectStatusQuery {
     bool speed = true,
     bool rpm = true,
   }) {
-    name = 'fan';
+    this.name = 'fan';
     parameters['speed'] = speed;
     parameters['rpm'] = rpm;
   }
@@ -118,7 +118,7 @@ class IdleTimeoutStatusQuery extends ObjectStatusQuery {
     bool state = true,
     bool printingTime = true,
   }) {
-    name = 'idle_timeout';
+    this.name = 'idle_timeout';
     parameters['state'] = state;
     parameters['printing_time'] = printingTime;
   }
@@ -130,7 +130,7 @@ class VirtualSDCardStatusQuery extends ObjectStatusQuery {
     bool isActive = true,
     bool filePosition = true,
   }) {
-    name = 'virtual_sdcard';
+    this.name = 'virtual_sdcard';
     parameters['progress'] = progress;
     parameters['is_active'] = isActive;
     parameters['file_position'] = filePosition;
@@ -146,7 +146,7 @@ class PrintStatsStatusQuery extends ObjectStatusQuery {
     bool state = true,
     bool message = true,
   }) {
-    name = 'print_stats';
+    this.name = 'print_stats';
     parameters['filename'] = filename;
     parameters['total_duration'] = totalDuration;
     parameters['print_duration'] = printDuration;
@@ -161,7 +161,7 @@ class DisplayStatusStatusQuery extends ObjectStatusQuery {
     bool message = true,
     bool progress = true,
   }) {
-    name = 'display_status';
+    this.name = 'display_status';
     parameters['message'] = message;
     parameters['progress'] = progress;
   }
@@ -174,7 +174,7 @@ class TemperatureSensorStatusQuery extends ObjectStatusQuery {
     bool measuredMinTemp = true,
     bool measuredMaxTemp = true,
   }) {
-    name = 'temperature_sensor $name';
+    this.name = 'temperature_sensor '+ name;
     parameters['temperature'] = temperature;
     parameters['measured_min_temp'] = measuredMinTemp;
     parameters['measured_max_temp'] = measuredMaxTemp;
@@ -188,7 +188,7 @@ class TemperatureFanStatusQuery extends ObjectStatusQuery {
     bool temperature = true,
     bool target = true,
   }) {
-    name = 'temperature_fan $name';
+    this.name = 'temperature_fan '+ name;
     parameters['speed'] = speed;
     parameters['temperature'] = temperature;
     parameters['target'] = target;
@@ -212,7 +212,7 @@ class OutputPinStatusQuery extends ObjectStatusQuery {
     String name, {
     bool value = true,
   }) {
-    name = 'output_pin $name';
+    this.name = 'output_pin $name';
     parameters['value'] = value;
   }
 }

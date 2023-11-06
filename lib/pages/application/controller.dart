@@ -231,12 +231,71 @@ class ApplicationController extends GetxController {
       });
     }
     KlipperPlugin klipperPlugin = KlipperPlugin();
-    void callBack(Klipper klipper,int num){
+    Future<void> callBack(Klipper klipper,int num) async {
       print("connect call back");
       List<ObjectStatusQuery> objects = [];
-      ExtruderStatusQuery eq = ExtruderStatusQuery();
-      objects.add(eq);
-      klipper.sendCommand(PrinterObjectsSubscribeCommand(objects: objects));
+
+
+      // WebhookStatusQuery wq = WebhookStatusQuery();
+      // objects.add(wq);
+
+      GCodeMoveStatusQuery gmsq = GCodeMoveStatusQuery();
+      objects.add(gmsq);
+
+      ToolheadStatusQuery thsq = ToolheadStatusQuery();
+      objects.add(thsq);
+
+      ConfigFileStatusQuery cfsq = ConfigFileStatusQuery();
+      objects.add(cfsq);
+
+      ExtruderStatusQuery esq = ExtruderStatusQuery();
+      objects.add(esq);
+
+      HeaterBedStatusQuery hbsq = HeaterBedStatusQuery();
+      objects.add(hbsq);
+
+      FanStatusQuery fsq = FanStatusQuery();
+      objects.add(fsq);
+
+      IdleTimeoutStatusQuery itsq = IdleTimeoutStatusQuery();
+      objects.add(itsq);
+
+      VirtualSDCardStatusQuery vssq = VirtualSDCardStatusQuery();
+      objects.add(vssq);
+
+      PrintStatsStatusQuery pssq = PrintStatsStatusQuery();
+      objects.add(pssq);
+
+      DisplayStatusStatusQuery dssq = DisplayStatusStatusQuery();
+      objects.add(dssq);
+
+      TemperatureSensorStatusQuery tssq = TemperatureSensorStatusQuery("怪兽8温度");
+      objects.add(tssq);
+
+      TemperatureSensorStatusQuery tssq1 = TemperatureSensorStatusQuery("A6-1450温度");
+      objects.add(tssq1);
+      // TemperatureFanStatusQuery tfsq = TemperatureFanStatusQuery("fan");
+      // objects.add(tfsq);
+
+      // FilamentSwitchSensorStatusQuery fssq = FilamentSwitchSensorStatusQuery();
+      // objects.add(fssq);
+      //
+      // OutputPinStatusQuery opsq = OutputPinStatusQuery();
+      // objects.add(opsq);
+
+      BedMeshStatusQuery bmsq = BedMeshStatusQuery();
+      objects.add(bmsq);
+
+      // GCodeMacroStatusQuery gmasq = GCodeMacroStatusQuery();
+      // objects.add(gmasq);
+      //
+      // CustomStatusQuery cq = CustomStatusQuery();
+      // objects.add(cq);
+
+
+
+     var re = await  klipper.sendCommand(PrinterObjectsSubscribeCommand(objects: objects));
+     print(re);
     }
 
     Klipper klipper = klipperPlugin.init(host: 'klipper.3dsqq.com', token: 'c56f88824524427d91e66284f24366b1', callBack: callBack);
