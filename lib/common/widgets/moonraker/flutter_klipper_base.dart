@@ -142,6 +142,7 @@ class Klipper {
   /// Stream for monitoring sensor events.
   Stream get onSensorEvent => _sensorEventController.stream;
 
+  late void  Function(Klipper klipper,int num)   callBackInline;
   // Constructor
   /// Creates a new Klipper instance. [host] is the hostname or IP address of the Klipper instance. [port] is the port of the Klipper instance. [timeout] is the timeout for the connection (retries if connection fails). [token] is the token for the Klipper instance.
   Klipper(
@@ -149,13 +150,15 @@ class Klipper {
     this.port = 7125,
     this.timeout = const Duration(seconds: 5),
     this.token,
+    completeCallback
   }) {
-    _connect(timeout);
-    _monitorConnection();
+    callBackInline = completeCallback;
+    _connect(timeout,completeCallback);
+    _monitorConnection(completeCallback);
   }
 
   // Connect
-  Future<void> _connect(Duration timeout) async {
+  Future<void> _connect(Duration timeout,Function(Klipper klipper,int num) completeCallback) async {
    Map<String,dynamic> headers = Map();
    headers["Origin"]= "http://klipper.3dsqq.com";
     try {
@@ -172,10 +175,11 @@ class Klipper {
       unawaited(_jsonRpc.listen());
       // Update Status
       statusNotifier.status = await _getCurrentStatus();
+      completeCallback(this,1);
     } catch (e) {
       statusNotifier.status = KlipperStatus.disconnected;
       if (!_closed) {
-        Future.delayed(Duration.zero, () => _connect(timeout));
+        Future.delayed(Duration.zero, () => _connect(timeout,completeCallback));
       }
     }
   }
@@ -215,13 +219,13 @@ class Klipper {
     if (statusNotifier.status != KlipperStatus.disconnected) {
       statusNotifier.status = await _getCurrentStatus();
       if (statusNotifier.status == KlipperStatus.disconnected) {
-        Future.delayed(Duration.zero, () => _connect(timeout));
+        Future.delayed(Duration.zero, () => _connect(timeout, this.callBackInline));
       }
     }
   }
 
   // Monitoring Loop
-  Future<void> _monitorConnection() async {
+  Future<void> _monitorConnection(Function(Klipper klipper,int num) completeCallback) async {
     while (!_closed) {
       await _updateStatus();
       await Future.delayed(const Duration(milliseconds: 250));

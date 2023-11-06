@@ -18,6 +18,7 @@ import 'package:flutter_klipper/pages/peer_chat/logic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:package_info/package_info.dart';
 import 'package:umeng_analytics_with_push/umeng_analytics_with_push.dart';
 import 'package:uni_links/uni_links.dart';
@@ -26,6 +27,10 @@ import '../../common/entities/im/Im_message.dart';
 import '../../common/services/storage.dart';
 import '../../common/values/key.dart';
 import '../../common/widgets/eve_button.dart';
+import '../../common/widgets/klipper.dart';
+import '../../common/widgets/moonraker/commands/status/printer_objects_subscription.dart';
+import '../../common/widgets/moonraker/commands/status/status_objects.dart';
+import '../../common/widgets/moonraker/flutter_klipper_base.dart';
 import '../calcucation/view.dart';
 import '../channel/view.dart';
 import '../conversion/view.dart';
@@ -206,7 +211,7 @@ class ApplicationController extends GetxController {
       webKey: flutter2dAMapWebKey,
     );
     im = FltImPlugin();
-    await im.init(host: IM_SERVER_HOST_URL, apiURL: IM_SERVER_API_URL);
+   // await im.init(host: IM_SERVER_HOST_URL, apiURL: IM_SERVER_API_URL);
     tfSender = ValueUtil.toStr(82);
     String imSender = StorageService.to.getString("memberId");
     if (imSender != "") {
@@ -225,6 +230,108 @@ class ApplicationController extends GetxController {
         //BlocProvider.of<ChatBloc>(context).add(EventNewMessage());
       });
     }
+    KlipperPlugin klipperPlugin = KlipperPlugin();
+    void callBack(Klipper klipper,int num){
+      print("connect call back");
+      List<ObjectStatusQuery> objects = [];
+      ExtruderStatusQuery eq = ExtruderStatusQuery();
+      objects.add(eq);
+      klipper.sendCommand(PrinterObjectsSubscribeCommand(objects: objects));
+    }
+
+    Klipper klipper = klipperPlugin.init(host: 'klipper.3dsqq.com', token: 'c56f88824524427d91e66284f24366b1', callBack: callBack);
+    Future.delayed(const Duration(seconds: 1)).then((e) async {
+
+
+    });
+    klipper.onMoonrakerStatsEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onBroadcastEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+
+
+    klipper.onAgentEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onSensorEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onAnnouncementDismissedEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onAnnouncementUpdatedEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onAnnouncementWakeEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onButtonEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onFileChangedEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onGCodeResponseEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onHistoryEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onJobQueueEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+
+    klipper.onServiceStateChangedEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+
+    klipper.onSudoAlertEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+    klipper.onThrottlingEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+
+
+    klipper.onUpdateManagerRefreshedEvent.listen((event) {
+      Parameters p = event as Parameters;
+      print(p.method);
+      print(p.value);
+    });
+
+
     Future.delayed(const Duration(seconds: 1)).then((e) async {
       _checkUpdateVersion();
     });
