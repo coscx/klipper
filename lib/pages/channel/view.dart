@@ -14,7 +14,9 @@ import '../../../common/entities/loan/loan.dart';
 
 
 import '../../common/entities/home/common.dart';
+import '../../common/entities/klipper/printer.dart';
 import '../../common/widgets/flutter_custom_select/widget/flutter_single_select.dart';
+import '../mine/view.dart';
 import 'logic.dart';
 
 class ChannelPage extends StatelessWidget {
@@ -35,7 +37,7 @@ class ChannelPage extends StatelessWidget {
           ),
         ),
         child: Scaffold(
-            backgroundColor: Color(0xffefefef),
+            //backgroundColor: Color(0xffefefef),
             //endDrawer: CategoryEndDrawer(),
             appBar: AppBar(
               //backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
@@ -248,7 +250,7 @@ class ChannelPage extends StatelessWidget {
                                       showCursor: true,
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.only(left: 40.w,right: 0,top: 50.h,bottom: 0),
-                                        hintText: "请输入渠道名称",
+                                        hintText: "请输入名称",
                                         hintStyle:
                                         const TextStyle(color: Colors.blue),
                                         border:  OutlineInputBorder(    borderRadius: BorderRadius.all(Radius.circular(40.h)),),
@@ -265,39 +267,113 @@ class ChannelPage extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 80.w,right: 80.w,top: 20.h),
-                              child: CoolDropdown(
-                                placeholder: "请选择类型",
-                                placeholderTS:TextStyle(color: Colors.blue, fontSize: 30.sp),
-                                resultHeight: 80.h,
-                                resultWidth: c.width-40.w,
-                                resultPadding: EdgeInsets.only(left: 40.w,right: 40.w),
-                                dropdownList: logic.dropdownItemList,
-                                onChange: (data) {
-                                  logic.onDropdownChange(data);
-                                },
-                                onOpen: (data) {
-                                  FocusScope.of(Get.context!).requestFocus(FocusNode());
-                                },
-                                defaultValue: logic.dropdownItemList[0],
-                                selectedItemBD:  BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.transparent,
+                              margin: EdgeInsets.only(left: 80.w,right:80.w,top: 10.h),
+                              height: 80.h,
+                              child: Row(
+                                children: [
 
-                                ),
-                                  selectedItemTS:TextStyle(color: Colors.blue, fontSize: 30.sp),
-                                  unselectedItemTS:TextStyle(color: Colors.black, fontSize: 30.sp),
-                                resultBD:    BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(40.h),
-                                  border: Border.all(width: 2.w,color: Colors.blue)
-                                ),
-                                resultTS: TextStyle(color: Colors.black, fontSize: 30.sp),
-                                dropdownWidth: c.width-240.w,
-                                isTriangle: true,
-                                // placeholder: 'insert...',
+
+                                  Expanded(
+                                    child: TextField(
+                                      autofocus: false,
+                                      controller: logic.urlController,
+                                      focusNode: logic.urlFieldNode,
+                                      style: const TextStyle(color: Colors.black),
+                                      minLines: 7,
+                                      maxLines: 7,
+                                      cursorColor: Colors.blue,
+                                      //cursorRadius: Radius.circular(40.h),
+                                      cursorWidth: 3.w,
+                                      showCursor: true,
+                                      decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.only(left: 40.w,right: 0,top: 50.h,bottom: 0),
+                                        hintText: "请输入地址",
+                                        hintStyle:
+                                        const TextStyle(color: Colors.blue),
+                                        border:  OutlineInputBorder(    borderRadius: BorderRadius.all(Radius.circular(40.h)),),
+                                        enabledBorder:  OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(40.h)),
+                                          borderSide:
+                                          BorderSide(color: Colors.blue),
+                                        ),
+                                      ),
+                                      onChanged: (v) {},
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
+                            Container(
+                              margin: EdgeInsets.only(left: 80.w,right:80.w,top: 10.h),
+                              height: 80.h,
+                              child: Row(
+                                children: [
+
+
+                                  Expanded(
+                                    child: TextField(
+                                      autofocus: false,
+                                      controller: logic.keyController,
+                                      focusNode: logic.keyFieldNode,
+                                      style: const TextStyle(color: Colors.black),
+                                      minLines: 7,
+                                      maxLines: 7,
+                                      cursorColor: Colors.blue,
+                                      //cursorRadius: Radius.circular(40.h),
+                                      cursorWidth: 3.w,
+                                      showCursor: true,
+                                      decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.only(left: 40.w,right: 0,top: 50.h,bottom: 0),
+                                        hintText: "请输入key",
+                                        hintStyle:
+                                        const TextStyle(color: Colors.blue),
+                                        border:  OutlineInputBorder(    borderRadius: BorderRadius.all(Radius.circular(40.h)),),
+                                        enabledBorder:  OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(40.h)),
+                                          borderSide:
+                                          BorderSide(color: Colors.blue),
+                                        ),
+                                      ),
+                                      onChanged: (v) {},
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Container(
+                            //   margin: EdgeInsets.only(left: 80.w,right: 80.w,top: 20.h),
+                            //   child: CoolDropdown(
+                            //     placeholder: "请选择类型",
+                            //     placeholderTS:TextStyle(color: Colors.blue, fontSize: 30.sp),
+                            //     resultHeight: 80.h,
+                            //     resultWidth: c.width-40.w,
+                            //     resultPadding: EdgeInsets.only(left: 40.w,right: 40.w),
+                            //     dropdownList: logic.dropdownItemList,
+                            //     onChange: (data) {
+                            //       logic.onDropdownChange(data);
+                            //     },
+                            //     onOpen: (data) {
+                            //       FocusScope.of(Get.context!).requestFocus(FocusNode());
+                            //     },
+                            //     defaultValue: logic.dropdownItemList[0],
+                            //     selectedItemBD:  BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(10),
+                            //       color: Colors.transparent,
+                            //
+                            //     ),
+                            //       selectedItemTS:TextStyle(color: Colors.blue, fontSize: 30.sp),
+                            //       unselectedItemTS:TextStyle(color: Colors.black, fontSize: 30.sp),
+                            //     resultBD:    BoxDecoration(
+                            //       color: Colors.white,
+                            //       borderRadius: BorderRadius.circular(40.h),
+                            //       border: Border.all(width: 2.w,color: Colors.blue)
+                            //     ),
+                            //     resultTS: TextStyle(color: Colors.black, fontSize: 30.sp),
+                            //     dropdownWidth: c.width-240.w,
+                            //     isTriangle: true,
+                            //     // placeholder: 'insert...',
+                            //   ),
+                            // ),
                             Container(
                               width: ScreenUtil().screenWidth,
                               height: 80.h,
@@ -306,6 +382,7 @@ class ChannelPage extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: () {
                                   logic.addChannels();
+
                                 },
                                 child: Text("提交",
                                     style: TextStyle(
@@ -349,7 +426,7 @@ class ChannelPage extends StatelessWidget {
                     child: SmartRefresher(
                         physics: const MyScrollPhysics(),
                         enablePullDown: true,
-                        enablePullUp: true,
+                       // enablePullUp: true,
                         header: DYrefreshHeader(),
                         footer: DYrefreshFooter(),
                         controller: logic.refreshController,
@@ -357,44 +434,39 @@ class ChannelPage extends StatelessWidget {
                         onLoading: logic.onLoading,
                         child: SingleChildScrollView(
                           controller: logic.scrollControl,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: _buildMyItem(),
+                          child: Container(
+                              child:_buildMyItem(),
                           ),
                         )),
                   ),
                 ),
               )));
 
-  List<GestureDetector> _buildMyItem() {
-    if (logic.loanData.isEmpty) {
-      return [GestureDetector(
+  GestureDetector _buildMyItem() {
+    if (logic.ns == null) {
+      return GestureDetector(
         onTap: () {
           Get.toNamed(AppRoutes.FineDetail);
         },
         child: EmptyPage(),
-      )
-      ];
+      );
     }
-    return logic.loanData
-        .map((e) =>
-        GestureDetector(
+    return GestureDetector(
           onTap: () {
-            Get.toNamed(AppRoutes.Fine,
-                arguments: {"cn_id": e.cnid, "title": e.cnname,"remark": e.remark});
+            // Get.toNamed(AppRoutes.Fine,
+            //     arguments: {"cn_id": e.cnid, "title": e.cnname,"remark": e.remark});
           },
-          child: MyChannelContent(
-            cnId: e.cnid,
-            cnName: e.cnname,
-            cnCode: e.cncode,
-            cnType: getCnType(e.cntype),
-            cnUser: e.searchvalue.toString(),
-            remark: e.remark,
-            time: e.createtime,
+          child: Obx(()=>MyChannelContent(
+            cnId: logic.ns!.system_memory!.total,
+            cnName: logic.extruderTemperature.value,
+            cnCode: logic.heaterBedTemperature.value,
+            cnType: logic.ns!.moonraker_stats!.mem_units,
+            cnUser: logic.ns!.moonraker_stats!.mem_units,
+            remark: logic.ns!.moonraker_stats!.mem_units,
+            time: logic.ns!.moonraker_stats!.mem_units,
             color: Colors.white,
-          ),
-        ))
-        .toList();
+          )),
+        );
   }
 
   MyItem getStatus(Data data) {
@@ -717,131 +789,95 @@ class _MyContentState extends State<MyChannelContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top:10.h, left: 10.w,right: 10.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15.w),
       ),
 
-      margin: EdgeInsets.only(top: 20.h, left: 40.w, right: 40.w),
-      padding: EdgeInsets.only(top: 20.h, left: 20.w, right: 20.w),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
 
               Container(
-                margin: EdgeInsets.only(top: 0.h, left: 30.w),
+                margin: EdgeInsets.only(top: 30.h, left: 20.w,right: 10.w),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text("渠道名称：",
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text(widget.cnName,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                      ],
-                    ),
-
-                    Row(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text("渠道编号：",
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text(widget.cnCode,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                      ],
-                    ),
-
-                    Row(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text("渠道类型：",
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text(widget.cnType,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                      ],
-                    ),
-
-                    Row(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text("渠道创建人：",
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text(widget.cnUser,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                      ],
-                    ),
-
-                    Row(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text("创建时间：",
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                        Container(
-                            margin: EdgeInsets.only(bottom: 0.h),
-                            child: Text(widget.time,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30.sp,
-                                    fontWeight: FontWeight.w600))),
-                      ],
-                    ),
-
+                    saleManGrid(),
                     SizedBox(height: 20.h,)
                   ],
                 ),
               ),
-            ],
-          ),
+
 
         ],
       ),
     );
   }
+
+}
+Widget saleManGrid(){
+  final logic = Get.find<ChannelLogic>();
+  return Container(
+    color: Colors.white,
+    child: Padding(
+      padding: EdgeInsets.only(
+          top: 0.h,
+          bottom: 00.h,
+          left: 0.w,
+          right: 0.w
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+
+            },
+            child: TopCard(
+              url: 'assets/images/ckt/extruder.png',
+              title: '热端',
+              content: logic.extruderTemperature.value.toString()+"℃",
+              colorStart: Color(0xfffd7193),
+              colorEnd: Color(0xffffa1bf), showTarget: logic.extruderTarget.value, showPower: logic.extruderPower.value,
+            ),
+          ),
+          Container(
+            width: 10.w,
+          ),
+          GestureDetector(
+            onTap: () {
+
+            },
+            child: TopCard(
+              url: 'assets/images/ckt/heat-wave.png',
+              title: '热床',
+              content: logic.heaterBedTemperature.value.toString()+"℃",
+              colorStart: Color(0xffb886fd),
+              colorEnd: Color(0xffd8aeff), showTarget: logic.heaterBedTarget.value, showPower: logic.heaterBedPower.value,
+            ),
+          ),
+          Container(
+            width: 10.w,
+          ),
+          GestureDetector(
+            onTap: () {
+
+            },
+            child: TopCard(
+              url: 'assets/images/ckt/good-feedback.png',
+              title: '今日待补件',
+              content: logic.progress.value.toString()+"%",
+              colorStart: Color(0xff41daa1),
+              colorEnd: Color(0xff87ebc6), showTarget: 0, showPower: 0,
+            ),
+          )
+        ],
+      ),
+    ),
+  );
 
 }

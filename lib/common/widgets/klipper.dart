@@ -1,7 +1,7 @@
 import '../widgets/moonraker/flutter_klipper_base.dart';
 
 class KlipperPlugin {
-  late final Klipper _klipper;
+  late  Klipper _klipper;
   static  KlipperPlugin? _instance;
   factory KlipperPlugin() {
     if (_instance == null) {
@@ -16,8 +16,8 @@ class KlipperPlugin {
 
   }
   /// 初始化
-  Klipper init({required String host, required String token,required Function(Klipper klipper,int num) callBack}) {
-    _klipper = Klipper(host, port: 80,token: token,completeCallback: callBack);
+  Klipper init({required String host, required String token,required Function(Klipper klipper,int num) callBack,required Function(dynamic error, dynamic stackTrace) onUnhandledErrorCallBack}) {
+    _klipper = Klipper(host, port: 80,token: token,completeCallback: callBack,onUnhandledErrorCallBack: onUnhandledErrorCallBack);
     return _klipper;
   }
 

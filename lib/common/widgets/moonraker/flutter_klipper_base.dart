@@ -44,6 +44,14 @@ class Klipper {
   bool _closed = false;
 
   // Events
+  final StreamController _notify_klippy_readyEventController =
+  StreamController.broadcast();
+  final StreamController _notify_klippy_shutdownEventController =
+  StreamController.broadcast();
+  final StreamController _notify_klippy_disconnectedEventController =
+  StreamController.broadcast();
+
+
   final StreamController _subscriptionEventController =
       StreamController.broadcast();
   final StreamController _gcodeResponseEventController =
@@ -76,6 +84,15 @@ class Klipper {
   final StreamController _sudoAlertEventController = StreamController();
   final StreamController _agentEventController = StreamController();
   final StreamController _sensorEventController = StreamController();
+
+  /// Stream for monitoring subscription events from printer objects.
+  Stream get onKlippyReadyEvent => _notify_klippy_readyEventController.stream;
+
+  /// Stream for monitoring GCode responses.
+  Stream get onKlippyShutdownEvent => _notify_klippy_shutdownEventController.stream;
+
+  /// Stream for monitoring file changes.
+  Stream get onKlippyDisconnectedEvent => _notify_klippy_disconnectedEventController.stream;
 
   /// Stream for monitoring subscription events from printer objects.
   Stream get onBroadcastEvent => _subscriptionEventController.stream;
@@ -143,22 +160,27 @@ class Klipper {
   Stream get onSensorEvent => _sensorEventController.stream;
 
   late void  Function(Klipper klipper,int num)   callBackInline;
+
+  late void Function(dynamic error, dynamic stackTrace) onUnhandledErrorCallBack;
   // Constructor
   /// Creates a new Klipper instance. [host] is the hostname or IP address of the Klipper instance. [port] is the port of the Klipper instance. [timeout] is the timeout for the connection (retries if connection fails). [token] is the token for the Klipper instance.
+
   Klipper(
-    this.host, {
-    this.port = 7125,
+     this.host,
+    {this.port = 7125,
     this.timeout = const Duration(seconds: 5),
     this.token,
-    completeCallback
+    completeCallback,
+    onUnhandledErrorCallBack
   }) {
-    callBackInline = completeCallback;
-    _connect(timeout,completeCallback);
+    this.callBackInline = completeCallback;
+    this.onUnhandledErrorCallBack = onUnhandledErrorCallBack;
+    _connect(timeout,completeCallback,this.onUnhandledErrorCallBack);
     _monitorConnection(completeCallback);
   }
 
   // Connect
-  Future<void> _connect(Duration timeout,Function(Klipper klipper,int num) completeCallback) async {
+  Future<void> _connect(Duration timeout,Function(Klipper klipper,int num) completeCallback,ErrorCallback? onUnhandledError) async {
    Map<String,dynamic> headers = Map();
    headers["Origin"]= "http://klipper.3dsqq.com";
     try {
@@ -170,7 +192,7 @@ class Klipper {
       // Create WebSocketChannel
       _wsc = IOWebSocketChannel(_ws!);
       // Connect to JSON-RPC
-      _jsonRpc = Peer(_wsc!.cast<String>());
+      _jsonRpc = Peer(_wsc!.cast<String>(),onUnhandledError: onUnhandledError);
       await _registerEventListeners();
       unawaited(_jsonRpc.listen());
       // Update Status
@@ -179,7 +201,7 @@ class Klipper {
     } catch (e) {
       statusNotifier.status = KlipperStatus.disconnected;
       if (!_closed) {
-        Future.delayed(Duration.zero, () => _connect(timeout,completeCallback));
+        Future.delayed(Duration.zero, () => _connect(timeout,completeCallback,this.onUnhandledErrorCallBack));
       }
     }
   }
@@ -188,6 +210,9 @@ class Klipper {
   /// Prevents the Klipper instance from reconnecting, and stops tracking events.
   Future<void> close() async {
     _closed = true;
+
+    await _wsc!.sink.close();
+
   }
 
   // Status Checker
@@ -213,13 +238,24 @@ class Klipper {
     }
     return KlipperStatus.disconnected;
   }
+  // Status Checker
+  Future<Map<String, dynamic>> getCurrentStatus() async {
+    try {
+      final Map<String, dynamic> status = await _jsonRpc
+          .sendRequest('server.info')
+          .timeout(const Duration(seconds: 1)) as Map<String, dynamic>;
+      return status;
+    } catch (e) {
+      return {};
+    }
 
+  }
   // Update Status
   Future<void> _updateStatus() async {
     if (statusNotifier.status != KlipperStatus.disconnected) {
       statusNotifier.status = await _getCurrentStatus();
       if (statusNotifier.status == KlipperStatus.disconnected) {
-        Future.delayed(Duration.zero, () => _connect(timeout, this.callBackInline));
+        Future.delayed(Duration.zero, () => _connect(timeout, this.callBackInline,this.onUnhandledErrorCallBack));
       }
     }
   }
@@ -349,12 +385,16 @@ class Klipper {
     // Klippy Status
     _jsonRpc.registerMethod('notify_klippy_ready', (params) {
       statusNotifier.status = KlipperStatus.ready;
+      _notify_klippy_readyEventController.add(params);
+
     });
     _jsonRpc.registerMethod('notify_klippy_shutdown', (params) {
       statusNotifier.status = KlipperStatus.shutdown;
+      _notify_klippy_shutdownEventController.add(params);
     });
     _jsonRpc.registerMethod('notify_klippy_disconnected', (params) async {
       statusNotifier.status = KlipperStatus.error;
+      _notify_klippy_disconnectedEventController.add(params);
     });
 
     // Broadcast Events

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flt_im_plugin/flt_im_plugin.dart';
 import 'package:flutter/material.dart';
@@ -298,53 +299,53 @@ class MinePage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            GestureDetector(
-              onTap: () {
-                bool gg = Get.isRegistered<ApplicationController>();
-                if (gg) {
-                  var homeLogic = Get.find<ApplicationController>();
-                  homeLogic.handleNavBarTap(0);
-                }
-              },
-              child: TopCard(
-                url: 'assets/images/ckt/dailianxi.408c6882.png',
-                title: '今日待联系',
-                content: logic.gridData.pendingcontact.toString(),
-                colorStart: Color(0xfffd7193),
-                colorEnd: Color(0xffffa1bf),
-              ),
-            ), GestureDetector(
-              onTap: () {
-                bool gg = Get.isRegistered<ApplicationController>();
-                if (gg) {
-                  var homeLogic = Get.find<ApplicationController>();
-                  homeLogic.handleNavBarTap(0);
-                }
-              },
-              child: TopCard(
-                url: 'assets/images/ckt/daitijiao.89f06227.png',
-                title: '今日待提交',
-                content: logic.gridData.pendingsubmission.toString(),
-                colorStart: Color(0xffb886fd),
-                colorEnd: Color(0xffd8aeff),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                bool gg = Get.isRegistered<ApplicationController>();
-                if (gg) {
-                  var homeLogic = Get.find<ApplicationController>();
-                  homeLogic.handleNavBarTap(0);
-                }
-              },
-              child: TopCard(
-                url: 'assets/images/ckt/bujian.80263e31.png',
-                title: '今日待补件',
-                content: logic.gridData.pendingsupplement.toString(),
-                colorStart: Color(0xff41daa1),
-                colorEnd: Color(0xff87ebc6),
-              ),
-            )
+            // GestureDetector(
+            //   onTap: () {
+            //     bool gg = Get.isRegistered<ApplicationController>();
+            //     if (gg) {
+            //       var homeLogic = Get.find<ApplicationController>();
+            //       homeLogic.handleNavBarTap(0);
+            //     }
+            //   },
+            //   child: TopCard(
+            //     url: 'assets/images/ckt/dailianxi.408c6882.png',
+            //     title: '今日待联系',
+            //     content: logic.gridData.pendingcontact.toString(),
+            //     colorStart: Color(0xfffd7193),
+            //     colorEnd: Color(0xffffa1bf),
+            //   ),
+            // ), GestureDetector(
+            //   onTap: () {
+            //     bool gg = Get.isRegistered<ApplicationController>();
+            //     if (gg) {
+            //       var homeLogic = Get.find<ApplicationController>();
+            //       homeLogic.handleNavBarTap(0);
+            //     }
+            //   },
+            //   child: TopCard(
+            //     url: 'assets/images/ckt/daitijiao.89f06227.png',
+            //     title: '今日待提交',
+            //     content: logic.gridData.pendingsubmission.toString(),
+            //     colorStart: Color(0xffb886fd),
+            //     colorEnd: Color(0xffd8aeff),
+            //   ),
+            // ),
+            // GestureDetector(
+            //   onTap: () {
+            //     bool gg = Get.isRegistered<ApplicationController>();
+            //     if (gg) {
+            //       var homeLogic = Get.find<ApplicationController>();
+            //       homeLogic.handleNavBarTap(0);
+            //     }
+            //   },
+            //   child: TopCard(
+            //     url: 'assets/images/ckt/bujian.80263e31.png',
+            //     title: '今日待补件',
+            //     content: logic.gridData.pendingsupplement.toString(),
+            //     colorStart: Color(0xff41daa1),
+            //     colorEnd: Color(0xff87ebc6),
+            //   ),
+            // )
           ],
         ),
       ),
@@ -407,13 +408,15 @@ class MinePage extends StatelessWidget {
 
 class TopCard extends StatelessWidget {
   TopCard(
-      {required this.url, required this.title, this.onPressed, required this.content, required this.colorStart, required this.colorEnd});
+      {required this.url, required this.title, this.onPressed, required this.content, required this.colorStart, required this.colorEnd,required this.showTarget,required this.showPower});
 
   final String url;
   final String title;
   final String content;
   final Color colorStart;
   final Color colorEnd;
+  final double showTarget;
+  final double showPower;
   final VoidCallback? onPressed;
 
   @override
@@ -440,43 +443,47 @@ class TopCard extends StatelessWidget {
             children: [
               Container(
                 width: 220.w,
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: EdgeInsets.only(
-                          left: 20.w, top: 20.h, bottom: 10.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 0.w, bottom: 5.h),
 
-                            child: Text(title,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 25.sp)),
+                          Container(
+                            padding: EdgeInsets.only(
+                                top: 10.h,
+                                bottom: 10.h,
+                                left: 0.w,
+                                right: 0.w
+                            ),
+                            width: 80.w,
+                            child: Image.asset(
+                               url),
                           ),
                           Container(
                             padding: EdgeInsets.only(left: 0.w, bottom: 5.h),
                             child: Text(content,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 25.sp)),
+                                    color: Colors.white, fontSize: 30.sp)),
                           ),
-                        ],
-                      ),
-                    ),
+                    showTarget >0?
+                        Container(
+                          padding: EdgeInsets.only(left: 0.w, bottom: 5.h),
+                          child: Text(""+showTarget.toString(),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 30.sp)),
+                        ):Container(),
+                    showPower >0?
+                    Container(
+                      padding: EdgeInsets.only(left: 0.w, bottom: 5.h),
+                      child: Text(""+showPower.toString(),
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 30.sp)),
+                    ):Container(),
 
                   ],
                 ),
               ),
-              Positioned(
-                bottom: -16.w,
-                right: 10.w,
-                //margin: EdgeInsets.only( bottom: 0.h,right: 10.w),
-                width: 70.w,
-                height: 70.h,
-                child: Image.asset(
-                    url),
-              ),
+
             ],
           ),
         ),

@@ -9,19 +9,23 @@ abstract class JsonRPCCommand {
 
   dynamic parseResponse(dynamic response) {
     if (response.toString().contains("JSON-RPC error")) {
-      final Map error = json.decode(
-        response
-            .toString()
-            .substring(response.toString().indexOf(':') + 2)
-            .replaceAll('"', '\\"')
-            .replaceAll("'", '"'),
-      ) as Map;
-      throw KlipperCommandError(
-        error['error'].toString(),
-        error['message'].toString(),
-      );
+      var res = response
+          .toString()
+          .substring(response.toString().indexOf(':') + 2)
+          .replaceAll('"', '\\"')
+          .replaceAll("'", '"');
+      if (res.contains("{") && res.contains("}") ){
+        Map error = json.decode(res) as Map;
+        return{
+          "error":error['error'].toString(),
+          "message":['message'].toString(),
+        };
+      }else{
+        return {"message":res};
+      }
+
     } else {
-      return response.toString();
+      return response;
     }
   }
 }
