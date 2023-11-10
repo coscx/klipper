@@ -41,7 +41,7 @@ class Klipper {
   // Status
   /// Listenable Notifier for monitoring the status of the Klipper instance.
   KlipperStatusNotifier statusNotifier = KlipperStatusNotifier();
-  bool _closed = false;
+  bool closed = false;
 
   // Events
   final StreamController _notify_klippy_readyEventController =
@@ -200,7 +200,7 @@ class Klipper {
       completeCallback(this,1);
     } catch (e) {
       statusNotifier.status = KlipperStatus.disconnected;
-      if (!_closed) {
+      if (!closed) {
         Future.delayed(Duration.zero, () => _connect(timeout,completeCallback,this.onUnhandledErrorCallBack));
       }
     }
@@ -209,9 +209,14 @@ class Klipper {
   // Close
   /// Prevents the Klipper instance from reconnecting, and stops tracking events.
   Future<void> close() async {
-    _closed = true;
-
-    await _wsc!.sink.close();
+    closed = true;
+    try{
+      await _jsonRpc.close();
+      await _wsc!.sink.close();
+      await _ws!.close();
+    }catch(e){
+      print(e);
+    }
 
   }
 
@@ -262,7 +267,7 @@ class Klipper {
 
   // Monitoring Loop
   Future<void> _monitorConnection(Function(Klipper klipper,int num) completeCallback) async {
-    while (!_closed) {
+    while (!closed) {
       await _updateStatus();
       await Future.delayed(const Duration(milliseconds: 250));
     }

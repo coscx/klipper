@@ -456,16 +456,21 @@ class ChannelPage extends StatelessWidget {
             // Get.toNamed(AppRoutes.Fine,
             //     arguments: {"cn_id": e.cnid, "title": e.cnname,"remark": e.remark});
           },
-          child: Obx(()=>MyChannelContent(
-            cnId: logic.ns!.system_memory!.total,
-            cnName: logic.extruderTemperature.value,
-            cnCode: logic.heaterBedTemperature.value,
-            cnType: logic.ns!.moonraker_stats!.mem_units,
-            cnUser: logic.ns!.moonraker_stats!.mem_units,
-            remark: logic.ns!.moonraker_stats!.mem_units,
-            time: logic.ns!.moonraker_stats!.mem_units,
-            color: Colors.white,
-          )),
+          child: Obx(()=>Column(
+            children: [
+              logic.showErr.value ? Error():Container(),
+              SizedBox(height: 20.h),
+              MyChannelContent(
+              cnId: logic.ns!.system_memory!.total,
+              cnName: logic.extruderTemperature.value,
+              cnCode: logic.heaterBedTemperature.value,
+              cnType: logic.ns!.moonraker_stats!.mem_units,
+              cnUser: logic.ns!.moonraker_stats!.mem_units,
+              remark: logic.ns!.moonraker_stats!.mem_units,
+              time: logic.ns!.moonraker_stats!.mem_units,
+              color: Colors.white,
+            )],
+            )),
         );
   }
 
@@ -786,6 +791,7 @@ class MyChannelContent extends StatefulWidget {
 }
 
 class _MyContentState extends State<MyChannelContent> {
+  final logic = Get.find<ChannelLogic>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -799,24 +805,54 @@ class _MyContentState extends State<MyChannelContent> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
               Container(
                 margin: EdgeInsets.only(top: 30.h, left: 20.w,right: 10.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     saleManGrid(),
-                    SizedBox(height: 20.h,)
+                    SizedBox(height: 20.h)
                   ],
                 ),
               ),
-
-
         ],
       ),
     );
   }
 
+}
+Widget Error(){
+  final logic = Get.find<ChannelLogic>();
+
+  return Container(
+    margin: EdgeInsets.only(top:10.h, left: 10.w,right: 10.w),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(15.w),
+    ),
+
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: ScreenUtil().screenWidth*0.90,
+          margin: EdgeInsets.only(top: 30.h, left: 30.w,right: 10.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                logic.ho!.stateMessage,
+                maxLines: 10,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: Colors.red),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }
 Widget saleManGrid(){
   final logic = Get.find<ChannelLogic>();

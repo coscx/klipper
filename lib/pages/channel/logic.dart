@@ -19,6 +19,7 @@ import '../../../common/entities/loan/channel.dart';
 import '../../../common/services/storage.dart';
 
 import '../../common/entities/klipper/cache_temperature_data.dart';
+import '../../common/entities/klipper/host_info.dart';
 import '../../common/entities/klipper/notify_proc_stat_update.dart';
 import '../../common/entities/klipper/notify_status_update.dart';
 import '../../common/entities/klipper/objec_subcribe.dart';
@@ -26,6 +27,7 @@ import '../../common/entities/klipper/printer.dart';
 import '../../common/entities/klipper/server_info.dart';
 import '../../common/widgets/moonraker/commands/sensor/list.dart';
 import '../../common/widgets/moonraker/commands/sensor/measure.dart';
+import '../../common/widgets/moonraker/services/status_notifiers.dart';
 import '../oa/user_detail/widget/common_dialog.dart';
 import 'state.dart';
 import '../../common/widgets/klipper.dart';
@@ -59,9 +61,9 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
   RxString progress ="0".obs;
   NotifyProcStatUpdate? ns;
   late StreamSubscription<bool> keyboardSubscription;
-
+  HostInfo? ho ;
   Timer? timer;
-
+  RxBool showErr = false.obs;
   bool show = false;
   double heights = 80.h;
   double closeHeights = 80.h;
@@ -104,7 +106,7 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
         break;
       case AppLifecycleState.paused:
         print("页面状态后台${state}");
-        klipperPlugin.getKlipper.close();
+        klipperPlugin.getKlipper?.close();
         break;
       case AppLifecycleState.detached:
         // TODO: Handle this case.
@@ -178,8 +180,14 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
     // CustomStatusQuery cq = CustomStatusQuery();
     // objects.add(cq);
 
-
-
+    var hostInfo1String = await  klipper.sendCommand(KlippyHostInfoCommand());
+    var hostInfo1Json= json.encode(hostInfo1String);
+    HostInfo hostInfo1 = HostInfo.fromJson(hostInfo1String);
+    print(hostInfo1);
+    if(hostInfo1.state !="ready"){
+     ho= hostInfo1;
+     showErr.value = true;
+    }
     var re = await  klipper.sendCommand(PrinterObjectsSubscribeCommand(objects: objects));
     var t= json.encode(re);
     ObjectSubcribe886333 ob = ObjectSubcribe886333.fromJson(re);
@@ -233,19 +241,24 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
       }
     }
     if(printer != null){
-      Klipper klipper = klipperPlugin.init(host: printer!.url, token: printer!.key, callBack: callBack, onUnhandledErrorCallBack: onUnhandledErrorCallBack);
+      if(klipperPlugin.getKlipper!= null){
+        if(!klipperPlugin.getKlipper!.closed){
+          klipperPlugin.getKlipper!.close();
+        }
+      }
+      Klipper? klipper = klipperPlugin.init(host: printer!.url, token: printer!.key, callBack: callBack, onUnhandledErrorCallBack: onUnhandledErrorCallBack);
       Future.delayed(const Duration(seconds: 1)).then((e) async {
 
 
       });
-      klipper.onMoonrakerStatsEvent.listen((event) {
+      klipper?.onMoonrakerStatsEvent.listen((event) {
         Parameters p = event as Parameters;
        // print(p.method);
         var ff = json.encode(p.value);
         ns = (NotifyProcStatUpdate.fromJson(p.value[0]));
        // print(ns);
       });
-      klipper.onBroadcastEvent.listen((event) {
+      klipper?.onBroadcastEvent.listen((event) {
         Parameters p = event as Parameters;
        // print(p.method);
         var ff = json.encode(p.value);
@@ -273,7 +286,7 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
        // }
 
       });
-      klipper.onKlippyReadyEvent.listen((event) {
+      klipper?.onKlippyReadyEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
@@ -281,60 +294,78 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
           timer!.cancel();
           timer = null;
         }
-        sendSunCriCommand(klipper);
+        _init();
+        showErr.value = false;
       });
-      klipper.onKlippyDisconnectedEvent.listen((event) {
+      klipper?.onKlippyDisconnectedEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onKlippyShutdownEvent.listen((event) {
+      klipper?.onKlippyShutdownEvent.listen((event) async {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
+
+        var re = await  klipper.sendCommand(KlippyHostInfoCommand());
+        var t= json.encode(re);
+        HostInfo ob = HostInfo.fromJson(re);
+        ho= ob;
+        print(t);
+
         timer = Timer.periodic(Duration(milliseconds: 1000), (t) async {
-          Map<String, dynamic> status =  await klipper.getCurrentStatus();
-          ServerInfo yy = ServerInfo.fromJson(status);
-          print(status);
+
+            Map<String, dynamic> status =  await klipper.getCurrentStatus();
+            ServerInfo yy = ServerInfo.fromJson(status);
+            print(status);
+            if(yy.klippyState == "ready"){
+              if(timer != null){
+                timer!.cancel();
+                timer = null;
+
+              }
+              showErr.value =false;
+            }
+            showErr.value =true;
         });
       });
 
-      klipper.onAgentEvent.listen((event) {
+      klipper?.onAgentEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onSensorEvent.listen((event) {
+      klipper?.onSensorEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onAnnouncementDismissedEvent.listen((event) {
+      klipper?.onAnnouncementDismissedEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onAnnouncementUpdatedEvent.listen((event) {
+      klipper?.onAnnouncementUpdatedEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onAnnouncementWakeEvent.listen((event) {
+      klipper?.onAnnouncementWakeEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onButtonEvent.listen((event) {
+      klipper?.onButtonEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onFileChangedEvent.listen((event) {
+      klipper?.onFileChangedEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onGCodeResponseEvent.listen((event) {
+      klipper?.onGCodeResponseEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
@@ -342,36 +373,36 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
           print("Klipper state: Shutdown");
         }
       });
-      klipper.onHistoryEvent.listen((event) {
+      klipper?.onHistoryEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onJobQueueEvent.listen((event) {
-        Parameters p = event as Parameters;
-        print(p.method);
-        print(p.value);
-      });
-
-      klipper.onServiceStateChangedEvent.listen((event) {
+      klipper?.onJobQueueEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
 
-      klipper.onSudoAlertEvent.listen((event) {
+      klipper?.onServiceStateChangedEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
-      klipper.onThrottlingEvent.listen((event) {
+
+      klipper?.onSudoAlertEvent.listen((event) {
+        Parameters p = event as Parameters;
+        print(p.method);
+        print(p.value);
+      });
+      klipper?.onThrottlingEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
       });
 
 
-      klipper.onUpdateManagerRefreshedEvent.listen((event) {
+      klipper?.onUpdateManagerRefreshedEvent.listen((event) {
         Parameters p = event as Parameters;
         print(p.method);
         print(p.value);
