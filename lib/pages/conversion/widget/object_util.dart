@@ -29,13 +29,13 @@ class ObjectUtil {
   /*
   *  获取app的AppBar、ToolBar颜色
   */
-  static Color getThemeColor({String color: "red"}) {
+  static Color getThemeColor({String color = "red"}) {
     return Colors.blue;
   }
   /*
   *  获取app的主题颜色
   */
-  static Color getThemeSwatchColor({String color: "red"}) {
+  static Color getThemeSwatchColor({String color = "red"}) {
     return Colors.blue;
   }
   /*

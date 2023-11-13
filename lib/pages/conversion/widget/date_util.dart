@@ -54,7 +54,7 @@ class DateUtil {
 
   ///get DateTime By Milliseconds.
   static DateTime getDateTimeByMs(int milliseconds,
-      {bool isUtc: false}) {
+      {bool isUtc = false}) {
     DateTime dateTime =
      DateTime.fromMillisecondsSinceEpoch(milliseconds, isUtc: isUtc);
     return dateTime;
@@ -83,7 +83,7 @@ class DateUtil {
   ///timeSeparate    time separate.
   static String getDateStrByTimeStr(
       String dateStr, {
-        DateFormat format: DateFormat.NORMAL,
+        DateFormat format = DateFormat.NORMAL,
         String? dateSeparate,
         String? timeSeparate,
       }) {
@@ -97,10 +97,10 @@ class DateUtil {
   ///dateSeparate    date separate.
   ///timeSeparate    time separate.
   static String getDateStrByMs(int milliseconds,
-      {DateFormat format: DateFormat.NORMAL,
+      {DateFormat format = DateFormat.NORMAL,
         String? dateSeparate,
         String? timeSeparate,
-        bool isUtc: false}) {
+        bool isUtc = false}) {
     dateSeparate ??= "";
     timeSeparate ??= "";
     DateTime dateTime = getDateTimeByMs(milliseconds, isUtc: isUtc);
@@ -114,7 +114,7 @@ class DateUtil {
   ///dateSeparate    date separate.
   ///timeSeparate    time separate.
   static String getDateStrByDateTime(DateTime dateTime,
-      {DateFormat format: DateFormat.NORMAL,
+      {DateFormat format = DateFormat.NORMAL,
         String? dateSeparate,
         String? timeSeparate}) {
     if (dateTime == null) return "";
@@ -266,14 +266,14 @@ class DateUtil {
 
   ///get WeekDay By Milliseconds.
   static String getWeekDayByMs(int milliseconds,
-      {bool isUtc: false}) {
+      {bool isUtc = false}) {
     DateTime dateTime = getDateTimeByMs(milliseconds, isUtc: isUtc);
     return getWeekDay(dateTime);
   }
 
   ///get ZH WeekDay By Milliseconds.
   static String getZHWeekDayByMs(int milliseconds,
-      {bool isUtc: false}) {
+      {bool isUtc = false}) {
     DateTime dateTime = getDateTimeByMs(milliseconds, isUtc: isUtc);
     return getZHWeekDay(dateTime);
   }

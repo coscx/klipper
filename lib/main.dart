@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
             Get.locale ??= locale;
             return locale;
           },
-          fallbackLocale: const Locale('en', 'US'),
+          fallbackLocale: const Locale('zh', 'CN'),
         ),
       ),
     );

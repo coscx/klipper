@@ -16,6 +16,8 @@ import '../../../common/entities/loan/loan.dart';
 import '../../common/entities/home/common.dart';
 import '../../common/entities/klipper/printer.dart';
 import '../../common/widgets/flutter_custom_select/widget/flutter_single_select.dart';
+import '../../common/widgets/klipper/control_tab.dart';
+import '../../common/widgets/klipper/control_xyz/control_xyz_card.dart';
 import '../mine/view.dart';
 import 'logic.dart';
 
@@ -469,7 +471,16 @@ class ChannelPage extends StatelessWidget {
               remark: logic.ns!.moonraker_stats!.mem_units,
               time: logic.ns!.moonraker_stats!.mem_units,
               color: Colors.white,
-            )],
+            ),
+              ControlXYZCard(),
+              BabySteppingCard(),
+              //GcodeMacroCard(),
+              ExtruderControlCard() ,
+              FansCard(),
+              PinsCard(),
+              MultipliersCard(),
+              LimitsCard(),
+            ],
             )),
         );
   }

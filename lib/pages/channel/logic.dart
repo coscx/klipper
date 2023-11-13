@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_klipper/common/apis/common.dart';
 import 'package:flutter_klipper/common/entities/loan/loan.dart';
 import 'package:flutter_klipper/common/widgets/moonraker/commands/commands.dart';
@@ -25,6 +26,7 @@ import '../../common/entities/klipper/notify_status_update.dart';
 import '../../common/entities/klipper/objec_subcribe.dart';
 import '../../common/entities/klipper/printer.dart';
 import '../../common/entities/klipper/server_info.dart';
+import '../../common/utils/time_util.dart';
 import '../../common/widgets/moonraker/commands/sensor/list.dart';
 import '../../common/widgets/moonraker/commands/sensor/measure.dart';
 import '../../common/widgets/moonraker/services/status_notifiers.dart';
@@ -83,6 +85,80 @@ class ChannelLogic extends GetxController  with WidgetsBindingObserver{
     {'label': '渠道公司', 'value': '2'},
     {'label': '装修公司', 'value': '3'}, // label is required and unique
   ];
+
+  List<QuickAction> directActions = [
+    QuickAction(
+      title: ('pages.dashboard.general.move_card.home_all_btn').tr,
+      description: ('pages.dashboard.general.move_card.home_all_tooltip').tr,
+      icon: Icons.home,
+      callback: (){}
+    ),
+
+      QuickAction(
+          title: ('pages.dashboard.general.move_card.qgl_btn').tr,
+          description: ('pages.dashboard.general.move_card.qgl_tooltip').tr,
+          icon: FlutterIcons.quadcopter_mco,
+          callback: (){}),
+
+      QuickAction(
+          title: ('pages.dashboard.general.move_card.mesh_btn').tr,
+          description: ('pages.dashboard.general.move_card.mesh_tooltip').tr,
+          icon: FlutterIcons.map_marker_path_mco,
+          callback: (){}),
+
+      QuickAction(
+        title: ('pages.dashboard.general.move_card.stc_btn').tr,
+        description: ('pages.dashboard.general.move_card.stc_tooltip').tr,
+        icon: FlutterIcons.screw_machine_flat_top_mco,
+        callback: (){},
+      ),
+
+      QuickAction(
+        title: ('pages.dashboard.general.move_card.ztilt_btn').tr,
+        description: ('pages.dashboard.general.move_card.ztilt_tooltip').tr,
+        icon: Icons.architecture,
+        callback: (){},
+      ),
+  ];
+
+  List<QuickAction> calibrationActions = [
+
+      QuickAction(
+        title: 'pages.dashboard.general.move_card.poff_btn'.tr,
+        description: 'pages.dashboard.general.move_card.poff_tooltip'.tr,
+        icon: FlutterIcons.grease_pencil_mco,
+        callback: (){},
+      ),
+
+      QuickAction(
+        title: ('pages.dashboard.general.move_card.bsa_btn').tr,
+        description: ('pages.dashboard.general.move_card.bsa_tooltip').tr,
+        icon: FlutterIcons.axis_z_rotate_clockwise_mco,
+        callback: (){},
+      ),
+
+      QuickAction(
+        title: 'pages.dashboard.general.move_card.zoff_btn'.tr,
+        description: 'pages.dashboard.general.move_card.zoff_tooltip'.tr,
+        icon: Icons.vertical_align_bottom,
+        callback: (){},
+      ),
+    QuickAction(
+      title: 'pages.dashboard.general.move_card.save_btn'.tr,
+      description: 'pages.dashboard.general.move_card.save_tooltip'.tr,
+      icon: Icons.save_alt,
+      callback: (){},
+    ),
+  ];
+
+  var m84 = QuickAction(
+    title: ('pages.dashboard.general.move_card.m84_btn').tr,
+    description: ('pages.dashboard.general.move_card.m84_tooltip').tr,
+    icon: Icons.near_me_disabled,
+    callback: (){},
+  );
+
+
   @override
   void onInit() {
     WidgetsBinding.instance.addObserver(this);
@@ -556,4 +632,18 @@ class MyItem {
         required this.status,
         required this.time,
         required this.color});
+}
+
+class QuickAction {
+
+  final String title;
+  final String description;
+  final IconData icon;
+  final FutureOr<void>? Function()? callback;
+  const QuickAction({
+    required  this.title,
+    required  this.description,
+    required  this.icon,
+    required  this.callback,
+  });
 }
